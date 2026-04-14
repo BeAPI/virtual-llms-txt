@@ -1,0 +1,20 @@
+{
+	"name": "virtual-llms-txt",
+	"version": "1.0.0",
+	"description": "Serves a virtual llms.txt document from site settings.",
+	"scripts": {
+		"wp-env": "wp-env",
+		"wp-env:start": "wp-env start",
+		"wp-env:stop": "wp-env stop",
+		"wp-env:clean": "wp-env clean",
+		"test:setup": "npm install && composer install"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^10.0.0"
+	},
+	"engines": {
+		"node": ">=18.0.0",
+		"npm": ">=8.0.0"
+	},
+	"license": "GPL-2.0-or-later"
+}

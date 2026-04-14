@@ -1,0 +1,16 @@
+{
+	"core": "WordPress/WordPress",
+	"plugins": [ "." ],
+	"phpVersion": "8.2",
+	"env": {
+		"tests": {
+			"phpVersion": "8.2",
+			"mappings": {
+				"wp-content/plugins/virtual-llms-txt": "."
+			}
+		}
+	},
+	"mappings": {
+		"wp-content/plugins/virtual-llms-txt": "."
+	}
+}

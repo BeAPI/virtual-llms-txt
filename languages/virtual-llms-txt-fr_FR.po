@@ -1,0 +1,45 @@
+# French translation for Virtual llms.txt
+# Copyright (C) 2026 the contributors
+# This file is distributed under the same license as the Virtual llms.txt package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Virtual llms.txt 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/virtual-llms-txt\n"
+"POT-Creation-Date: 2026-04-14 12:00+0000\n"
+"PO-Revision-Date: 2026-04-14 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Français\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Cursor Agent\n"
+
+msgid "Virtual llms.txt"
+msgstr "llms.txt virtuel"
+
+msgid "Public URL"
+msgstr "URL publique"
+
+#. translators: %s: linked label "llms.txt".
+msgid "For document structure, see the %s overview site."
+msgstr "Pour la structure du document, consultez le site de présentation %s."
+
+msgid "llms.txt"
+msgstr "llms.txt"
+
+msgid "Document body"
+msgstr "Corps du document"
+
+msgid "Plain text (often Markdown-style). This is served as text/plain without HTML escaping."
+msgstr "Texte brut (souvent de type Markdown). Il est servi en texte/plain, sans échappement HTML."
+
+msgid "Deactivation"
+msgstr "Désactivation"
+
+msgid "Delete all plugin settings when this plugin is deactivated."
+msgstr "Supprimer tous les réglages de l’extension lors de sa désactivation."
+
+msgid "Settings"
+msgstr "Réglages"
