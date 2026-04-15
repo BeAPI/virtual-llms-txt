@@ -8,8 +8,8 @@
  * Plugin URI:        https://llmstxt.org/
  * Description:       Serves a virtual llms.txt document from site settings (plain text, per site).
  * Version:           1.0.0
- * Requires at least: 6.3
- * Requires PHP:      8.2
+ * Requires at least: 6.0
+ * Requires PHP:      8.0
  * Author:            Contributors
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -20,6 +20,8 @@
  */
 
 declare( strict_types=1 );
+
+namespace Virtual_Llms_Txt;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -34,7 +36,7 @@ define( 'VIRTUAL_LLMS_TXT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
  *
  * @param string $class_name Fully qualified class name.
  */
-function virtual_llms_txt_autoload( string $class_name ): void {
+function autoload( string $class_name ): void {
 	$prefix = 'Virtual_Llms_Txt\\';
 	if ( ! str_starts_with( $class_name, $prefix ) ) {
 		return;
@@ -47,9 +49,9 @@ function virtual_llms_txt_autoload( string $class_name ): void {
 	}
 }
 
-spl_autoload_register( 'virtual_llms_txt_autoload' );
+spl_autoload_register( __NAMESPACE__ . '\\autoload' );
 
-register_activation_hook( VIRTUAL_LLMS_TXT_PLUGIN_FILE, [ \Virtual_Llms_Txt\Plugin::class, 'activate' ] );
-register_deactivation_hook( VIRTUAL_LLMS_TXT_PLUGIN_FILE, [ \Virtual_Llms_Txt\Plugin::class, 'deactivate' ] );
+register_activation_hook( VIRTUAL_LLMS_TXT_PLUGIN_FILE, [ Plugin::class, 'activate' ] );
+register_deactivation_hook( VIRTUAL_LLMS_TXT_PLUGIN_FILE, [ Plugin::class, 'deactivate' ] );
 
-\Virtual_Llms_Txt\Plugin::instance()->register_hooks();
+Plugin::instance()->register_hooks();

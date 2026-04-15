@@ -33,23 +33,29 @@ final class Plugin {
 	 */
 	public function register_hooks(): void {
 		add_action( 'plugins_loaded', [ $this, 'on_plugins_loaded' ] );
+		add_action( 'init', [ $this, 'load_textdomain' ], 0 );
 	}
 
 	/**
 	 * Load translations and subsystems.
 	 */
 	public function on_plugins_loaded(): void {
-		load_plugin_textdomain(
-			'virtual-llms-txt',
-			false,
-			dirname( plugin_basename( VIRTUAL_LLMS_TXT_PLUGIN_FILE ) ) . '/languages'
-		);
-
 		( new Front_Controller() )->register_hooks();
 
 		if ( is_admin() ) {
 			( new Admin\Settings_Page() )->register_hooks();
 		}
+	}
+
+	/**
+	 * Loads plugin translations after WordPress has initialized the locale.
+	 */
+	public function load_textdomain(): void {
+		load_plugin_textdomain(
+			'virtual-llms-txt',
+			false,
+			dirname( plugin_basename( VIRTUAL_LLMS_TXT_PLUGIN_FILE ) ) . '/languages'
+		);
 	}
 
 	/**

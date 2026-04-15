@@ -1,10 +1,10 @@
 {
 	"core": "WordPress/WordPress",
 	"plugins": [ "." ],
-	"phpVersion": "8.2",
+	"phpVersion": "8.0",
 	"env": {
 		"tests": {
-			"phpVersion": "8.2",
+			"phpVersion": "8.0",
 			"mappings": {
 				"wp-content/plugins/virtual-llms-txt": "."
 			}

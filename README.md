@@ -35,7 +35,7 @@ A WordPress plugin that serves a **virtual [llms.txt](https://llmstxt.org/)** do
 | Piece | Role |
 |--------|------|
 | `virtual_llms_txt` option | Serialized array: `content`, `remove_settings_on_deactivate`. One option per site on multisite. |
-| `Virtual_Llms_Txt\Front_Controller` | On `template_redirect`, checks whether the request matches the path for `home_url( '/llms.txt' )`; if so, sends headers, disables browser caching (`nocache_headers()`), then outputs raw text. |
+| `Virtual_Llms_Txt\Front_Controller` | On `template_redirect`, checks whether the request matches the path for `home_url( '/llms.txt' )`; if so, sends headers, then outputs raw text. |
 | `Virtual_Llms_Txt\Admin\Settings_Page` | Settings screen, sanitization (`sanitize_textarea_field` on content), **Settings** shortcut on the Plugins list. |
 | Activation | Ensures the option exists with defaults when missing. |
 
@@ -45,8 +45,8 @@ Public output is **intentionally not HTML-escaped**: it is served as a text docu
 
 ## Requirements
 
-- **WordPress** 6.3 or newer  
-- **PHP** 8.2 or newer  
+- **WordPress** 6.0 or newer  
+- **PHP** 8.0 or newer  
 
 ---
 

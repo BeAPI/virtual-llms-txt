@@ -37,7 +37,6 @@ final class Front_Controller {
 		$content = Options::get_content();
 
 		status_header( 200 );
-		nocache_headers();
 		header( 'Content-Type: text/plain; charset=UTF-8' );
 
 		if ( 'HEAD' === $method ) {

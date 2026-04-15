@@ -25,6 +25,7 @@ final class Settings_Page {
 	public function register_hooks(): void {
 		add_action( 'admin_init', [ $this, 'register_setting' ] );
 		add_action( 'admin_menu', [ $this, 'register_menu' ] );
+		add_action( 'admin_notices', [ $this, 'maybe_warn_plain_permalinks' ] );
 		add_filter( 'plugin_action_links_' . plugin_basename( VIRTUAL_LLMS_TXT_PLUGIN_FILE ), [ $this, 'add_action_links' ] );
 	}
 
@@ -54,6 +55,52 @@ final class Settings_Page {
 			self::PAGE_SLUG,
 			[ $this, 'render_page' ]
 		);
+	}
+
+	/**
+	 * Warn administrators on this plugin's settings screen when plain permalinks prevent /llms.txt from working.
+	 */
+	public function maybe_warn_plain_permalinks(): void {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$screen = get_current_screen();
+		if ( null === $screen || 'settings_page_' . self::PAGE_SLUG !== $screen->id ) {
+			return;
+		}
+
+		if ( '' !== (string) get_option( 'permalink_structure' ) ) {
+			return;
+		}
+
+		$permalink_url = admin_url( 'options-permalink.php' );
+		?>
+		<div class="notice notice-warning">
+			<p>
+				<strong><?php esc_html_e( 'Virtual llms.txt', 'virtual-llms-txt' ); ?>:</strong>
+				<?php
+				echo wp_kses(
+					sprintf(
+						/* translators: %s: URL to Permalink Settings screen. */
+						__( 'Pretty permalinks are required: with the Plain structure, the virtual <code>/llms.txt</code> URL cannot be served and this plugin will not work. Choose any other permalink structure under %s.', 'virtual-llms-txt' ),
+						sprintf(
+							'<a href="%s">%s</a>',
+							esc_url( $permalink_url ),
+							esc_html__( 'Permalink Settings', 'virtual-llms-txt' )
+						)
+					),
+					[
+						'code' => [],
+						'a'    => [
+							'href' => true,
+						],
+					]
+				);
+				?>
+			</p>
+		</div>
+		<?php
 	}
 
 	/**

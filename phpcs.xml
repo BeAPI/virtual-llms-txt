@@ -33,10 +33,10 @@
 		<severity>0</severity>
 	</rule>
 
-	<config name="minimum_supported_wp_version" value="6.3"/>
+	<config name="minimum_supported_wp_version" value="6.0"/>
 
 	<rule ref="PHPCompatibility"/>
-	<config name="testVersion" value="8.2-"/>
+	<config name="testVersion" value="8.0-"/>
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>
