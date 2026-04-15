@@ -50,7 +50,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          tools: php-parallel-lint
+          tools: parallel-lint
 
       - name: Lint PHP files
         run: parallel-lint --exclude vendor --exclude node_modules .
